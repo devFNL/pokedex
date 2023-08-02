@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="imagen/x-icon" href="media/Pokefavicon.ico" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Pokedex</title>
+  </head>
+  <body>
+    <div class="card">
+      <img id="pic" />
+
+      <h1 id="name"></h1>
+      <h2 id="type"></h2>
+      <h3 id="height"></h2>
+      <h3 id="weight"></h2>
+    </div>
+
+    <div class="find">
+      <input type="text" id="search" />
+
+      <div class="buttons">
+        <button id="previous">←</button>
+        <button id="go">Find</button>
+        <button id="next">→</button>
+      </div>
+    </div>
+    
+    <div class="pokemonListContainer" id="listCont">
+      <div class="loader"></div>
+    </div>
+
+    <script src="ui.js" type="module"></script>
+  </body>
+</html>
