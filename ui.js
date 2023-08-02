@@ -24,15 +24,13 @@ function printPokemonDetails(pokemon) {
   }
 
   $type.innerText = "TYPE: " + tipos;
-  $height.innerText = "Height: " + pokemon.height;
-  $weight.innerText = "Weight: " + pokemon.weight;
+  $height.innerText = "Height: " + pokemon.height + " ft.";
+  $weight.innerText = "Weight: " + pokemon.weight + " lbs.";
 }
 
 function mapPokemonToButton(pokemon) {
   const button = document.createElement("button");
   button.innerText = pokemon.name;
-  //  button.dataset.link = pokemon.url;
-  console.log(pokemon);
   button.onclick = async () => {
     const pokemonResult = await fetchPokemon(pokemon.name);
     printPokemonDetails(pokemonResult);
@@ -41,7 +39,8 @@ function mapPokemonToButton(pokemon) {
 }
 
 async function renderButtons(page) {
-  const buttons = page.results.map(mapPokemonToButton);
+  const pokemonList = await fetchPokemonList(page * 10);
+  const buttons = pokemonList.results.map(mapPokemonToButton);
 
   $listContainer.innerHTML = "";
 
@@ -50,27 +49,19 @@ async function renderButtons(page) {
   });
 }
 
-//---------------
-
-let page = 0;
+let currentPage = 0;
 
 async function handlePageChange(e) {
   const direction = e.currentTarget.id;
-  console.log(direction);
   $listContainer.innerHTML = '<div class="loader"></div>';
 
-  let pageOffset;
-
   if (direction === "next") {
-    page++;
-    pageOffset = page * 10;
+    currentPage++;
   } else {
-    page--;
-    pageOffset = page * 10;
+    currentPage--;
   }
 
-  const pokemonList = await fetchPokemonList(pageOffset);
-  await renderButtons(pokemonList);
+  await renderButtons(currentPage);
 }
 
 $nextButton.onclick = handlePageChange;
@@ -80,3 +71,9 @@ $go.onclick = async () => {
   const pokeRes = await fetchPokemon($input.value.toLowerCase());
   printPokemonDetails(pokeRes);
 };
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const pikachu = await fetchPokemon("pikachu");
+  printPokemonDetails(pikachu);
+  await renderButtons(currentPage);
+});

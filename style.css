@@ -19,6 +19,7 @@ body::before {
 }
 
 .find {
+  min-width: 260px;
   display: flex;
   width: 15%;
   align-items: center;
