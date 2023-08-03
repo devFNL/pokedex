@@ -86,7 +86,7 @@ button {
   background-color: black;
   color: white;
   margin: 2px;
-  padding: 10px;
+  padding: 5px 10px;
   font-family: "Nunito Sans", sans-serif;
   font-family: "Roboto", sans-serif;
   font-weight: bold;
@@ -115,7 +115,7 @@ button {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin: 10px;
+  margin: 3px 10px;
   padding: 1px;
   user-select: none;
 }
@@ -136,12 +136,13 @@ button {
 
 #previous,
 #next {
+  margin: 2px 0px;
   font-weight: bold;
 }
 
 #go {
   display: inline-block;
-  margin: 4px;
+  margin: 2px 4px;
   padding: 0.3rem 1rem;
   font-size: 16px;
   font-weight: 700;
