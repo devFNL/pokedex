@@ -11,7 +11,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40%;
+  width: fit-content;
   margin: 5px auto;
   padding: 5px 5px;
   background-color: rgba(0, 0, 0, 0.8);
@@ -115,14 +115,25 @@ button {
   min-width: 800px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   margin: auto;
-  width: 60%;
+  width: fit-content;
+  flex-wrap: wrap;
   padding: 10px;
   margin-top: 15px;
   background-color: rgba(0, 0, 0, 0.8);
   border-radius: 10px;
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.6);
+}
+
+@media screen and (max-width: 768px) {
+  .pokemonListContainer {
+    min-width: unset;
+    width: 100%;
+    justify-content: space-around;
+    padding: 5px;
+    margin-top: 5px;
+  }
 }
 
 #previous,
