@@ -10,6 +10,7 @@ const $go = document.querySelector("#go");
 const $listContainer = document.querySelector("#listCont");
 const $nextButton = document.querySelector("#next");
 const $previousButton = document.querySelector("#previous");
+const $pageNumber = document.querySelector("#pageNumber");
 
 const typeColors = {
   normal: "#A8A77A",
@@ -80,6 +81,7 @@ async function renderButtons(page) {
   buttons.forEach((element) => {
     $listContainer.appendChild(element);
   });
+  $pageNumber.innerHTML = page + 1;
 }
 
 let currentPage = 0;
